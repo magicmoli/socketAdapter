@@ -1,5 +1,5 @@
 package com.sample.adapter;
 
-public class SocketConnection {
+public class SocketConnection implements{
 
 }
