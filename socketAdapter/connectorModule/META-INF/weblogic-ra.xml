@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-connector xmlns="http://xmlns.oracle.com/weblogic/weblogic-connector">
+
+   <outbound-resource-adapter>
+
+   <connection-definition-group>
+            
+   <connection-factory-interface>
+      com.sample.adapter.RAConnectionFactory
+   </connection-factory-interface>
+
+      <connection-instance>
+         <jndi-name>eis/SocketAdapter</jndi-name>
+
+         <connection-properties>
+            <logging>
+               <log-filename>socket_ad.log</log-filename>
+               <logging-enabled>true</logging-enabled>
+            </logging>
+          
+         </connection-properties>
+      </connection-instance>
+
+   </connection-definition-group>
+
+   </outbound-resource-adapter>
+
+
+</weblogic-connector>
