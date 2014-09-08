@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="ContactListPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findAllContacts.result" DataControl="AddressBook" RangeSize="-1"
+                    BeanClass="acme.bean.Contact" id="findAllContactsIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="findAllContacts" RequiresUpdateModel="true" Action="invokeMethod" MethodName="findAllContacts"
+                  IsViewObjectMethod="false" DataControl="AddressBook" InstanceName="data.AddressBook.dataProvider"
+                  ReturnName="data.AddressBook.methodResults.findAllContacts_AddressBook_dataProvider_findAllContacts_result"/>
+    <tree IterBinding="findAllContactsIterator" id="Contact">
+      <nodeDefinition DefName="acme.bean.Contact" Name="Contact0">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="email"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

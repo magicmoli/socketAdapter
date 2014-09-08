@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="ContactLookup.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:decorativeBox id="db1">
+                <f:facet name="center">
+                    <af:table value="#{bindings.Contact.collectionModel}" var="row" rows="#{bindings.Contact.rangeSize}"
+                              emptyText="#{bindings.Contact.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="0" fetchSize="#{bindings.Contact.rangeSize}" id="t1">
+                        <af:column sortProperty="#{bindings.Contact.hints.name.name}" sortable="true"
+                                   headerText="#{bindings.Contact.hints.name.label}" id="c1">
+                            <af:outputText value="#{row.name}" shortDesc="#{bindings.Contact.hints.name.tooltip}"
+                                           id="ot1"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.Contact.hints.email.name}" sortable="true"
+                                   headerText="#{bindings.Contact.hints.email.label}" id="c2">
+                            <af:outputText value="#{row.email}" shortDesc="#{bindings.Contact.hints.email.tooltip}"
+                                           id="ot2"/>
+                        </af:column>
+                    </af:table>
+                </f:facet>
+                <f:facet name="top">
+                    <af:panelGroupLayout id="pgl1" layout="scroll">
+                        <af:panelGroupLayout id="pgl2" layout="horizontal">
+                            <af:inputText value="#{bindings.name.inputValue}" label="Enter part of name: "
+                                          required="#{bindings.name.hints.mandatory}"
+                                          columns="#{bindings.name.hints.displayWidth}"
+                                          maximumLength="#{bindings.name.hints.precision}"
+                                          shortDesc="#{bindings.name.hints.tooltip}" id="it1">
+                                <f:validator binding="#{bindings.name.validator}"/>
+                            </af:inputText>
+                            <af:button actionListener="#{bindings.findContactsByName.execute}" text="Find"
+                                       disabled="#{!bindings.findContactsByName.enabled}" id="b1"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </f:facet>
+            </af:decorativeBox>
+        </af:form>
+    </af:document>
+</f:view>
